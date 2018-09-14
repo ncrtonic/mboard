@@ -21,6 +21,7 @@ display: inline;
 </style>
 </head>
 <body>
+<h1>회원 목록</h1>
 <a href="regist"> 회원등록하기 </a>
 	<table>
 		<tr>
