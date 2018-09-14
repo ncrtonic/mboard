@@ -25,7 +25,7 @@ display: inline;
 이름 : <input type="text" name="m_id" ><br>
 아이디: <input type="text" name="m_name"><br>
 <input type="submit" value="등록"/>
-<input type="button" onclick="location.href='/mboard';" value="취소" />
+<input type="button" onclick="location.href='${pageContext.request.contextPath }';" value="취소" />
 </form>
 
 

@@ -38,7 +38,8 @@ display: inline;
 				<td>${memberVO.m_name}</td> 
 				<td>${memberVO.regdate}</td>
 				<td>${memberVO.updatedate}</td>
-				<td><button onclick="del(${memberVO.m_num});">삭제</button></td>
+				<td>
+				<button onclick="del(${memberVO.m_num});">삭제</button></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -81,6 +82,9 @@ display: inline;
 		if (cf == true) {
 			location.href = 'delete?m_num='+num
 		}
+	}
+	function edit(num) {
+		location.href = 'edit?m_num='+num
 	}
 </script>
 </html>
