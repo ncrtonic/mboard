@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.study.mboard.Mapper">
+
+	<select id="list" resultType="org.study.mboard.VO.MemberVO"
+		parameterType="org.study.mboard.VO.Criteria">
+ <![CDATA[
+ select 
+   m_num, m_id, m_name, regdate, updatedate
+ from (
+ 		select m_num, m_id, m_name, regdate, updatedate
+ 		, row_number() over(order by m_num desc) as seq
+ 		from member
+ 		) DS
+ 	where seq between #{rowStart} and #{rowEnd} 
+ ]]>
+	</select>
+
+	<select id="countPaging" resultType="int"
+		parameterType="org.study.mboard.VO.Criteria">
+ <![CDATA[
+ select 
+   count(m_num) 
+ from 
+   member
+ where 
+   m_num > 0 
+ ]]>
+	</select>
+
+	<insert id="regist">
+		insert into member (m_num, m_id, m_name) values 
+		( sq_member.NEXTVAL,#{m_id},#{m_name})
+	</insert>
+	
+	<delete id="delete">
+		delete from member where m_num = #{m_num}
+	</delete>
+
+</mapper>
